@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from astroquery.mast import Observations
 from astropy.coordinates import SkyCoord
@@ -6,7 +7,8 @@ from tqdm import tqdm
 
 # Load the CSV file with object information
 # You need to make sure that there is a column called source_id, ra and dec.
-path_file = '../data/test_query_website.csv'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+path_file = os.path.join(script_dir, '../data/metadata/test_query_website.csv')
 df = pd.read_csv(path_file)
 
 # Limit to first 3 objects for testing; remove this line for full batch processing
